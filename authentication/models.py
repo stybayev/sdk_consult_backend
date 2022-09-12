@@ -93,10 +93,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone_verified = models.BooleanField(default=False)
     phone_verification_code = models.CharField(max_length=255, null=True, blank=True)
 
-    first_name_cyrillic = models.CharField(max_length=255, null=True, blank=True)
-    last_name_cyrillic = models.CharField(max_length=255, null=True, blank=True)
-    first_name_latin = models.CharField(max_length=255, null=True, blank=True)
-    last_name_latin = models.CharField(max_length=255, null=True, blank=True)
+    first_name = models.CharField(max_length=255, null=True, blank=True)
+    last_name = models.CharField(max_length=255, null=True, blank=True)
     patronymic = models.CharField(max_length=255, null=True, blank=True)
     iin_number = models.CharField(max_length=12, null=True, blank=True)
 
@@ -117,10 +115,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def full_name(self):
-        if self.first_name_latin and self.last_name_latin:
-            name = f'{self.first_name_latin} {self.last_name_latin}'
-        elif self.first_name_cyrillic and self.last_name_cyrillic:
-            name = f'{self.first_name_cyrillic} {self.last_name_cyrillic}'
+        if self.first_name and self.last_name:
+            name = f'{self.first_name} {self.first_name}'
         else:
             name = self.email
         return name

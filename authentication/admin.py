@@ -9,10 +9,9 @@ class UserAdmin(admin.ModelAdmin):
         'phone_number',
         'email_verified',
         'phone_verified',
-        'first_name_cyrillic',
-        'last_name_cyrillic',
-        'first_name_latin',
-        'last_name_latin')
+        'first_name',
+        'last_name',
+    )
 
     list_filter = ['email', ]
 
