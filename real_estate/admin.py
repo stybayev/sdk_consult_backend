@@ -2,7 +2,14 @@ from django.contrib import admin
 from real_estate.models import RealEstate, CityDistricts, Images
 
 
+class InfoBlocksInline(admin.StackedInline):
+    extra = 0
+    model = Images
+    fields = ['image', ]
+
+
 class RealEstateAdmin(admin.ModelAdmin):
+    inlines = [InfoBlocksInline, ]
     list_display = (
         'real_estate_type',
         'district_city',

@@ -40,14 +40,6 @@ class RealEstate(models.Model):
         verbose_name='Цена'
     )
 
-    photo = models.ForeignKey(
-        'real_estate.Images',
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        related_name='house_images',
-        verbose_name='Фото', )
-
     subject_to_mortgage = models.CharField(
         max_length=255,
         null=True,
@@ -108,6 +100,27 @@ class RealEstate(models.Model):
         verbose_name='Описание'
     )
 
+    @property
+    def real_estate_info(self):
+        dict_info = dict()
+        dict_info['real_estate_type'] = self.real_estate_type
+        dict_info['number_of_rooms'] = self.number_of_rooms
+        dict_info['price'] = self.price
+        dict_info['subject_to_mortgage'] = self.subject_to_mortgage
+        dict_info['primary_secondary'] = self.primary_secondary
+        dict_info['year_of_construction'] = self.year_of_construction
+        dict_info['floor'] = self.floor
+        dict_info['presence_balcony'] = self.presence_balcony
+        dict_info['glazed_balcony'] = self.glazed_balcony
+        dict_info['number_of_bathrooms'] = self.number_of_bathrooms
+        dict_info['number_of_square_meters'] = self.number_of_square_meters
+        dict_info['current_state'] = self.current_state
+        dict_info['description'] = self.description
+        return dict_info
+
+    def __str__(self):
+        return f'{self.real_estate_type} - {self.district_city}'
+
     class Meta:
         verbose_name = "Недвижимость"
         verbose_name_plural = "01 Недвижимости"
@@ -131,6 +144,18 @@ class Images(models.Model):
         upload_to='images/real_estate/',
         verbose_name='Фото'
     )
+
+    real_estate = models.ForeignKey(
+        'real_estate.RealEstate',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='images',
+        verbose_name='Квартира'
+    )
+
+    def __str__(self):
+        return f'{self.image.url}'
 
     class Meta:
         verbose_name = "Фото"
