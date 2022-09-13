@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'drf_yasg',
     'authentication',
+    'contents',
+    'real_estate',
 ]
 
 SWAGGER_SETTINGS = {
@@ -74,6 +76,26 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
+
+CSRF_TRUSTED_ORIGINS = ['https://*.apibackend.ddns.net', 'https://127.0.0.1:8080']
+
+CSRF_COOKIE_SECURE = False
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "https://apibackend.ddns.net",
+    "http://0.0.0.0:8080",
+    "http://127.0.0.1:8000",
+]
+
+CORS_ALLOW_HEADERS = ('content-disposition',
+                      'accept-encoding',
+                      'content-type',
+                      'accept',
+                      'origin',
+                      'authorization',
+                      'x-api-key')
 
 TEMPLATES = [
     {
