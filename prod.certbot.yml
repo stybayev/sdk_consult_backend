@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  nginx:
+    image: staticfloat/nginx-certbot
+    container_name: nginx
+    volumes:
+      - letsencrypt:/etc/letsencrypt
+      - ./docker/nginx/certbot.conf:/etc/nginx/user.conf.d/nginx_template.conf:ro
+      - ./docker/nginx/proxy.conf:/etc/nginx/user.conf.d/proxy.conf:ro
+      - ./static/:/app/static/
+      - ./media/:/app/media/
+    ports:
+      - "443:443"
+      - "80:80"
+    env_file:
+      - ./.env
+    environment:
+      CERTBOT_EMAIL: dosxana@gmail.com
+      # variable names are space-separated
+      ENVSUBST_VARS: APP
+      APP: ${URL_PROD}
+  app:
+    depends_on:
+      - nginx
+
+
+volumes:
+  letsencrypt:
