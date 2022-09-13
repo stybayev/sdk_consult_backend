@@ -8,6 +8,14 @@ from authentication import messages
 from datetime import datetime
 
 
+def send_code_email(user, code):
+    email_body = f"Code confirmation - {code}"
+
+    data = {'email_body': email_body, 'to_email': user.email,
+            'email_subject': 'Verify your email  again'}
+    Util.send_email(data)
+
+
 def get_email_verification_code():
     code = str(randint(1000, 9999))
     return code
@@ -73,7 +81,7 @@ def validate_phone_number_resend_phone_verify(phone_number):  # noqa
 
 
 def set_phone_change(phone_number, user):
-    user.phone_change = phone_number
+    user.phone_number = phone_number
 
 
 def get_phone_number(request):

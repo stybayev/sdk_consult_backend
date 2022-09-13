@@ -126,7 +126,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self._generate_jwt_token()
 
     def get_short_name(self):
-        return self.last_name_latin
+        return self.last_name
 
     def _generate_jwt_token(self):
         refresh = RefreshToken.for_user(self)
@@ -139,3 +139,5 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "01 Пользователи"
+
+

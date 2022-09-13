@@ -3,7 +3,7 @@ version: "3.7"
 services:
   app:
     build: .
-    container_name: my_app
+    container_name: my_app_consult
     volumes:
       - .:/code
     ports:
@@ -13,7 +13,7 @@ services:
       - db
   db:
     image: postgres:12.6-alpine
-    container_name: my_db
+    container_name: my_db_consult
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
