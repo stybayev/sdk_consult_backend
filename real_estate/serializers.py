@@ -85,14 +85,4 @@ class AddImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Images
         fields = ['image', 'real_estate']
-    #
-    # def create(self, validated_data):
-    #     id_real_estate = validated_data.pop('real_estate')
-    #     real_estate = RealEstate.objects.get(title=id_real_estate)
-    #     print(real_estate)
-    #     print('asdf')
-    #     self.image = Images.objects.create(**validated_data)
-    #     self.image.save()
-    #     # real_estate.images = self.image
-    #     # real_estate.save()
-    #     return self.images
+

@@ -34,7 +34,8 @@ class RealEstateDetailView(views.APIView):
 
 class RealEstateCreateView(generics.GenericAPIView):
     serializer_class = RealEstateCreateSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
+    # permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
@@ -46,7 +47,7 @@ class RealEstateCreateView(generics.GenericAPIView):
 
 class AddingImageView(generics.GenericAPIView):
     serializer_class = AddImageSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     parser_classes = (MultiPartParser,)
 
     @swagger_auto_schema(operation_description='Upload file...', )
