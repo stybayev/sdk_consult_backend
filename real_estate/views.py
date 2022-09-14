@@ -3,11 +3,10 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status, views, permissions, generics
 from rest_framework.parsers import MultiPartParser
-
-from authentication import messages
 from real_estate.models import RealEstate
-from real_estate.serializers import RealEstateSerializer, RealEstateDetailSerializer, RealEstateCreateSerializer, \
-    AddImageSerializer
+from real_estate.serializers import (RealEstateSerializer, RealEstateDetailSerializer,
+                                     RealEstateCreateSerializer,
+                                     AddImageSerializer)
 
 
 class RealEstateListView(views.APIView):
@@ -34,8 +33,7 @@ class RealEstateDetailView(views.APIView):
 
 class RealEstateCreateView(generics.GenericAPIView):
     serializer_class = RealEstateCreateSerializer
-
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
@@ -47,7 +45,7 @@ class RealEstateCreateView(generics.GenericAPIView):
 
 class AddingImageView(generics.GenericAPIView):
     serializer_class = AddImageSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     parser_classes = (MultiPartParser,)
 
     @swagger_auto_schema(operation_description='Upload file...', )

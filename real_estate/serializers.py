@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from real_estate.models import RealEstate, CityDistricts, Images
 
 
@@ -85,4 +84,8 @@ class AddImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Images
         fields = ['image', 'real_estate']
+
+
+
+
 

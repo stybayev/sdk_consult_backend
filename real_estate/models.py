@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
 
@@ -99,6 +100,13 @@ class RealEstate(models.Model):
         blank=True,
         verbose_name='Описание'
     )
+
+    users = models.ManyToManyField(
+        get_user_model(),
+        related_name='favorite',
+        null=True,
+        blank=True,
+        verbose_name='Пользователи, у которых данная недвиэимость в избарнных')
 
     @property
     def real_estate_info(self):
