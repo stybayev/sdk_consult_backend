@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'contents',
     'real_estate',
     'favorites',
+    'services',
 ]
 
 SWAGGER_SETTINGS = {
