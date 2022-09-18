@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'favorites',
     'services',
     'contacts',
-    'programs'
+    'programs',
+    'comments',
 ]
 
 SWAGGER_SETTINGS = {

@@ -14,7 +14,6 @@ class ContactsForCommunication(models.Model):
         verbose_name = "Контакты"
         verbose_name_plural = " 01 Контакты"
 
-
     @property
     def contact_info(self):
         contact = dict()
