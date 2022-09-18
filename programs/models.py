@@ -4,9 +4,14 @@ from parler.models import TranslatableModel, TranslatedFields
 
 class Programs(TranslatableModel):
     translations = TranslatedFields(
-        title=models.CharField(max_length=100),
-        descriptions=models.TextField(),
-        logo=models.ImageField(upload_to='images/programs/', blank=True, null=True),
+        title=models.CharField(max_length=100,
+                               verbose_name='Название программы'),
+
+        descriptions=models.TextField(verbose_name='Описание программы'),
+
+        logo=models.ImageField(upload_to='images/programs/',
+                               blank=True, null=True,
+                               verbose_name='Логотип программы'),
     )
 
     def __str__(self):

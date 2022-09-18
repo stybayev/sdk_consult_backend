@@ -1,13 +1,13 @@
 from rest_framework.response import Response
 from rest_framework import views, status
-
+from django.utils.translation import get_language
 from services.models import Services
 from services.serializers import ServicesListSerializer, ServicesDetailSerializer
 
 
 class ServicesListView(views.APIView):
     def get(self, request):
-        news_articles = Services.objects.all()
+        news_articles = Services.objects.language(get_language()).all()
         serializer = ServicesListSerializer(news_articles, many=True)
         return Response(serializer.data)
 
@@ -15,7 +15,7 @@ class ServicesListView(views.APIView):
 class ServicesDetailView(views.APIView):
     def get(self, request, pk):
         try:
-            services = Services.objects.get(id=pk)
+            services = Services.objects.language(get_language()).get(id=pk)
             serializer = ServicesDetailSerializer(services)
             return Response(serializer.data)
         except Services.DoesNotExist:

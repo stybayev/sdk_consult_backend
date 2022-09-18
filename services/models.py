@@ -1,18 +1,24 @@
 from django.db import models
+from parler.models import TranslatableModel, TranslatedFields
 
 
-class Services(models.Model):
-    title = models.CharField(
-        max_length=255,
-        verbose_name='Название услуги')
+class Services(TranslatableModel):
+    translations = TranslatedFields(
+        title=models.CharField(
+            max_length=255,
+            verbose_name='Название услуги'),
 
-    description = models.TextField(
-        verbose_name='Полное описание услуги'
+        description=models.TextField(
+            verbose_name='Полное описание услуги'
+        ),
     )
 
     order_service = models.CharField(
         max_length=255,
         verbose_name='Заказ услуги для обратной связи')
+
+    def __str__(self):
+        return f'{self.title}'
 
     @property
     def service_info(self):

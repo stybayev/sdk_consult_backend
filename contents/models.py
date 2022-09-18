@@ -12,11 +12,17 @@ from parler.models import TranslatableModel, TranslatedFields
 
 class NewsArticle(TranslatableModel):
     translations = TranslatedFields(
-        title=models.CharField(max_length=100, blank=True, null=True),
-        descriptions=models.TextField(),
-        url_link=models.CharField(max_length=100, blank=True, null=True),
-        image=models.ImageField(upload_to='images/news_article/images/', blank=True, null=True),
-        published_date=models.DateField(null=True, blank=True),
+        title=models.CharField(max_length=100, blank=True, null=True,
+                               verbose_name='Загловок новости'),
+
+        descriptions=models.TextField(verbose_name='Полное описание новости'),
+
+        url_link=models.CharField(max_length=100, blank=True, null=True,
+                                  verbose_name='URL-ссылка новости'),
+
+        image=models.ImageField(upload_to='images/news_article/images/', blank=True, null=True,
+                                verbose_name='Изображение новости'),
+        published_date=models.DateField(null=True, blank=True, verbose_name='Дата публикации'),
     )
 
     def __str__(self):
