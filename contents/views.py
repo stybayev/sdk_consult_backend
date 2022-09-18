@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import get_language
 
 from rest_framework.response import Response
 from rest_framework import generics, status, views, permissions
@@ -10,7 +11,7 @@ from .serializers import NewsArticleListSerializer, NewsArticleDetailSerializer
 class NewsArticleListView(views.APIView):
     def get(self, request):
         try:
-            news_articles = NewsArticle.objects.all()
+            news_articles = NewsArticle.objects.language(get_language()).all()
             serializer = NewsArticleListSerializer(news_articles, many=True)
             return Response(serializer.data)
         except NewsArticle.DoesNotExist:
@@ -27,7 +28,7 @@ class NewsArticleListView(views.APIView):
 class NewsArticleDetailView(views.APIView):
     def get(self, request, pk):
         try:
-            news_article = NewsArticle.objects.get(id=pk)
+            news_article = NewsArticle.objects.language(get_language()).get(id=pk)
             serializer = NewsArticleDetailSerializer(news_article)
             return Response(serializer.data)
         except NewsArticle.DoesNotExist:

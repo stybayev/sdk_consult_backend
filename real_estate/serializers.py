@@ -99,6 +99,7 @@ class AddImageSerializer(serializers.ModelSerializer):
             received_format = images.split('.')[-1]
             if received_format not in valid_formats:
                 raise InvalidFormatAPIException()
+
         return super().validate(data)
 
     class Meta:

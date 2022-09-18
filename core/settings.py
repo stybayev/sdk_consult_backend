@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import environ
+from django.utils.translation import gettext_lazy as _
 
 load_dotenv()
 
@@ -54,6 +55,8 @@ INSTALLED_APPS = [
     'contacts',
     'programs',
     'comments',
+    'rosetta',
+    'parler',
 ]
 
 SWAGGER_SETTINGS = {
@@ -70,6 +73,7 @@ SWAGGER_SETTINGS = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
@@ -157,7 +161,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Asia/Almaty'
 
@@ -200,3 +204,25 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('kz', _('Kazakh')),
+)
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en', },  # English
+        {'code': 'ru', },  # Russian
+        {'code': 'kz', },  # Kazakh
+    ),
+    'default': {
+        'fallbacks': ['ru'],
+        'hide_untranslated': False,
+    }
+}

@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-18 18:19+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: contents/models.py:13
+msgid "title"
+msgstr ""
+
+#: contents/models.py:14
+msgid "descriptions"
+msgstr ""
+
+#: contents/models.py:15
+msgid "url_link"
+msgstr ""
+
+#: contents/models.py:16
+msgid "image"
+msgstr ""
+
+#: contents/models.py:17
+msgid "ordering_number"
+msgstr ""
+
+#: contents/models.py:18
+msgid "published_date"
+msgstr ""
+
+#: core/settings.py:207
+msgid "English"
+msgstr "Ағылшын"
+
+#: core/settings.py:208
+msgid "Russian"
+msgstr "Орыс"
+
+#: core/settings.py:209
+msgid "Kazakh"
+msgstr "Қазақ"

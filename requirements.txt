@@ -12,7 +12,9 @@ django-admin-rangefilter==0.8.4
 django-cors-headers==3.11.0
 django-encrypted-field==1.0.4
 django-environ==0.8.1
+django-parler==2.3
 django-regex-field==2.0.2
+django-rosetta==0.9.8
 django-templated-mail==1.1.1
 django-user-agents==0.4.0
 djangorestframework==3.13.1
@@ -35,6 +37,7 @@ packaging==21.3
 passlib==1.7.4
 Pillow==9.0.1
 pluggy==1.0.0
+polib==1.1.1
 psycopg2-binary==2.9.3
 py==1.11.0
 pycodestyle==2.8.0
