@@ -13,3 +13,12 @@ class Services(models.Model):
     order_service = models.CharField(
         max_length=255,
         verbose_name='Заказ услуги для обратной связи')
+
+    @property
+    def service_info(self):
+        new_dict = dict()
+        new_dict['title'] = self.title
+        new_dict['description'] = self.description
+        new_dict['order_service'] = self.order_service
+
+        return new_dict

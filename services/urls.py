@@ -3,6 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # path('add_to_favorite/', views.AddFavoriteView.as_view(), name='add_to_favorite'),
-
+    path('services_list/', views.ServicesListView.as_view(), name='services_list'),
+    path('services_detail/<int:pk>/', views.ServicesDetailView.as_view(), name='services_detail'),
 ]

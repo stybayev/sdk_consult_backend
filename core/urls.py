@@ -39,10 +39,11 @@ schema_view = get_schema_view(
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('auth/', include('authentication.urls')),
-                  path('content/', include('contents.urls')),
+                  path('news/', include('contents.urls')),
                   path('favorites/', include('favorites.urls')),
-                  path('favorites/', include('services.urls')),
+                  path('services/', include('services.urls')),
                   path('real_estate/', include('real_estate.urls')),
+                  path('contacts/', include('contacts.urls')),
                   path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
                   path('api/api.json/', schema_view.without_ui(cache_timeout=0), name='schema-swagger-ui'),
                   path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
