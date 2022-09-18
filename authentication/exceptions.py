@@ -23,3 +23,11 @@ class TokenErrorAPIException(APIException):
 
 class InvalidTokenAPIException(APIException):
     pass
+
+
+class InvalidFormatAPIException(APIException):
+    pass
+
+
+class InvalidSizeAPIException(APIException):
+    pass

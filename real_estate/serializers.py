@@ -1,4 +1,9 @@
+import os
+
 from rest_framework import serializers
+
+from authentication.exceptions import InvalidFormatAPIException, InvalidSizeAPIException
+from core import settings
 from real_estate.models import RealEstate, CityDistricts, Images
 
 
@@ -81,11 +86,21 @@ class AddImageSerializer(serializers.ModelSerializer):
         error_messages={"blank": 'Веберите рисунок'},
         required=True)
 
+    def validate(self, data):
+        valid_formats = ['png', 'jpg', 'jpeg']
+
+        images = str(data.get('image', None))
+
+        image_size = data.get('image', None).size
+        if image_size > 10000000:
+            raise InvalidSizeAPIException()
+
+        if images is not None:
+            received_format = images.split('.')[-1]
+            if received_format not in valid_formats:
+                raise InvalidFormatAPIException()
+        return super().validate(data)
+
     class Meta:
         model = Images
         fields = ['image', 'real_estate']
-
-
-
-
-

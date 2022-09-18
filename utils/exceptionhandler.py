@@ -4,7 +4,7 @@ from rest_framework.views import exception_handler
 from authentication import messages
 from authentication.exceptions import (EmailVerifyError,
                                        TokenErrorAPIException,
-                                       InvalidTokenAPIException)
+                                       InvalidTokenAPIException, InvalidFormatAPIException, InvalidSizeAPIException)
 
 
 def get_full_details(detail, response):  # noqa
@@ -67,6 +67,15 @@ def custom_exception_handler(exc, context):  # noqa
         if isinstance(exc, InvalidTokenAPIException):
             return Responses.error_response(error_messages=messages.TEXT_UNAUTHORIZED,
                                             status_code=401)
+
+        if isinstance(exc, InvalidFormatAPIException):
+            return Responses.error_response(error_messages='Недопустимый формат изображения',
+                                            status_code=400)
+
+        if isinstance(exc, InvalidSizeAPIException):
+            return Responses.error_response(
+                error_messages='Вы не сможете загружать файлы размерм больше 10MB',
+                status_code=400)
 
         if isinstance(exc, MethodNotAllowed):
             return Responses.error_response(
