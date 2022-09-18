@@ -208,7 +208,7 @@ DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 LANGUAGES = (
     ('en', _('English')),
     ('ru', _('Russian')),
-    ('kz', _('Kazakh')),
+    ('kk', _('Kazakh')),
 )
 
 LOCALE_PATHS = [
@@ -219,7 +219,7 @@ PARLER_LANGUAGES = {
     None: (
         {'code': 'en', },  # English
         {'code': 'ru', },  # Russian
-        {'code': 'kz', },  # Kazakh
+        {'code': 'kk', },  # Kazakh
     ),
     'default': {
         'fallbacks': ['ru'],

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.utils.translation import get_language
 from rest_framework.response import Response
 from rest_framework import generics, status, views, permissions
 
@@ -10,7 +10,7 @@ from programs.serializers import ProgramsListSerializer, ProgramsDetailSerialize
 class ProgramsListView(views.APIView):
     def get(self, request):
         try:
-            programs = Programs.objects.all()
+            programs = Programs.objects.language(get_language()).all()
             serializer = ProgramsListSerializer(programs, many=True)
             return Response(serializer.data)
         except Programs.DoesNotExist:
@@ -26,7 +26,7 @@ class ProgramsListView(views.APIView):
 class ProgramsDetailView(views.APIView):
     def get(self, request, pk):
         try:
-            program = Programs.objects.get(id=pk)
+            program = Programs.objects.language(get_language()).get(id=pk)
             serializer = ProgramsDetailSerializer(program)
             return Response(serializer.data)
         except Programs.DoesNotExist:

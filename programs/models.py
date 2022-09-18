@@ -1,10 +1,13 @@
 from django.db import models
+from parler.models import TranslatableModel, TranslatedFields
 
 
-class Programs(models.Model):
-    title = models.CharField(max_length=100)
-    descriptions = models.TextField()
-    logo = models.ImageField(upload_to='images/programs/', blank=True, null=True)
+class Programs(TranslatableModel):
+    translations = TranslatedFields(
+        title=models.CharField(max_length=100),
+        descriptions=models.TextField(),
+        logo=models.ImageField(upload_to='images/programs/', blank=True, null=True),
+    )
 
     def __str__(self):
         return self.title

@@ -12,7 +12,7 @@ class ContactsForCommunication(models.Model):
 
     class Meta:
         verbose_name = "Контакты"
-        verbose_name_plural = " 01 Контакты"
+        verbose_name_plural = "01 Контакты"
 
     @property
     def contact_info(self):
