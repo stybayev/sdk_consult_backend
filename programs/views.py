@@ -1,16 +1,19 @@
+from django.shortcuts import render
+
 from rest_framework.response import Response
 from rest_framework import generics, status, views, permissions
-from contacts.models import ContactsForCommunication
-from contacts.serializers import ContactListSerializer, ContactDetailSerializer
+
+from programs.models import Programs
+from programs.serializers import ProgramsListSerializer, ProgramsDetailSerializer
 
 
-class ContactListView(views.APIView):
+class ProgramsListView(views.APIView):
     def get(self, request):
         try:
-            contacts = ContactsForCommunication.objects.all()
-            serializer = ContactListSerializer(contacts, many=True)
+            programs = Programs.objects.all()
+            serializer = ProgramsListSerializer(programs, many=True)
             return Response(serializer.data)
-        except ContactsForCommunication.DoesNotExist:
+        except Programs.DoesNotExist:
             return Response(
                 {
                     'error': {
@@ -20,17 +23,17 @@ class ContactListView(views.APIView):
                 status=status.HTTP_404_NOT_FOUND)
 
 
-class ContactDetailView(views.APIView):
+class ProgramsDetailView(views.APIView):
     def get(self, request, pk):
         try:
-            contacts = ContactsForCommunication.objects.get(id=pk)
-            serializer = ContactDetailSerializer(contacts)
+            program = Programs.objects.get(id=pk)
+            serializer = ProgramsDetailSerializer(program)
             return Response(serializer.data)
-        except ContactsForCommunication.DoesNotExist:
+        except Programs.DoesNotExist:
             return Response(
                 {
                     'error': {
                         'status_code': status.HTTP_404_NOT_FOUND,
-                        'message': f'Контакт с данным id не существует!'}
+                        'message': f'Программы с данным id не существует!'}
                 },
                 status=status.HTTP_404_NOT_FOUND)

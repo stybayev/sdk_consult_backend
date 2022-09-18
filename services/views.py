@@ -22,7 +22,6 @@ class ServicesDetailView(views.APIView):
             return Response(
                 {
                     'error': {
-                        'field': 'country_iso_code',
                         'status_code': status.HTTP_404_NOT_FOUND,
                         'message': f'Услуга с данным id не существует!'}
                 },
