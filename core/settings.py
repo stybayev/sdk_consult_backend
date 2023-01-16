@@ -86,7 +86,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
-CSRF_TRUSTED_ORIGINS = ['https://*.apibackend.ddns.net', 'https://127.0.0.1:8080']
+CSRF_TRUSTED_ORIGINS = ['https://*.warm-data.com/', 'https://backend.warm-data.com/']
 
 CSRF_COOKIE_SECURE = False
 
