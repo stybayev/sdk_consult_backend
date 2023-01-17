@@ -45,3 +45,7 @@ if settings.DEBUG:
 
 handler404 = 'utils.views.error_404'
 handler500 = 'utils.views.error_500'
+
+admin.site.site_header = 'ssd.consult.kz'
+admin.site.index_title = 'ssd.consult.kz'
+admin.site.site_title = 'ssd.consult.kz'
